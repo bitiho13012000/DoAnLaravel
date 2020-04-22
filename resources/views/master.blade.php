@@ -19,7 +19,7 @@
 
         <ul class="nav navbar-nav">
             <li class="active">
-                <a href="{{route('home')}}">Home</a>
+                <a href="{{ route('home') }}">Home</a>
             </li>
             <li>
                 <a href="{{ route('about') }}">About</a>
