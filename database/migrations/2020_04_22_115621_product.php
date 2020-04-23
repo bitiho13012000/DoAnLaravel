@@ -15,17 +15,17 @@ class Product extends Migration
     {
         Schema::create('product', function (Blueprint $table) {
             $table->increments('id');
-
             $table->string('name',150);
             $table->string('slug',150)->unique();
             $table->string('image',150);
             $table->string('image_list');
             $table->integer('price');
             $table->integer('sale_price');
-            $table->integer('category_id');
+            $table->integer('category_id')->unsigned();
             $table->tinyInteger('status')->nullalbe()->default(1);
             $table->text('content');
             $table->timestamps();
+            $table->foreign('category_id')->references('id')->on('category');
         });
     }
 
@@ -37,6 +37,5 @@ class Product extends Migration
     public function down()
     {
         Schema::dropIfExists('product');
-        //
     }
 }

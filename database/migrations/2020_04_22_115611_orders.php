@@ -15,11 +15,13 @@ class Orders extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('customer_id');
+            $table->integer('customer_id')->unsigned();
             $table->string('email',50)->nullable();
             $table->string('phone',50)->nullable();
             $table->string('address')->nullable();
             $table->timestamps();
+            $table->foreign('customer_id')->references('id')->on('customer');
+
         });
     }
 
