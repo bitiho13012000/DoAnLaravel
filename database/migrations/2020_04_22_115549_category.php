@@ -15,12 +15,10 @@ class Category extends Migration
     {
         Schema::create('category', function (Blueprint $table) {
             $table->increments('id');
-
             $table->string('name',150);
             $table->string('slug',150)->unique();
             $table->integer('ordering')->nullable()->default(1);
             $table->tinyInteger('status')->nullalbe()->default(1);
-            $table->text('content');
             $table->timestamps();
         });
     }
