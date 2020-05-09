@@ -12,7 +12,7 @@
 
            <div class="form-group">
 
-               <input type="text" class="form-control" id="" name="search" placeholder="Input keyword">
+               <input type="text" class="form-control" id="" name="search" placeholder="Input keyword" >
            </div>
            <button type="submit" class="btn btn-primary">
                Tìm kiếm
