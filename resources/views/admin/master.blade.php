@@ -38,24 +38,38 @@
             </div>
         </nav>
         <!-- /. NAV TOP  -->
+        <?php
+            $menus = config('menu');
+        ?>
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-
-                    <li>
-                        <a class="active-menu" href="{{ route('home') }}">Trang Chủ</a>
-                    </li>
-                    <li>
-                        <a class="active-menu" href="{{ route('cate') }}"></i>Category</a>
-                    </li>
-                    <li>
-                        <a class="active-menu" href="#">Products</a>
-                    </li>
-                    <li>
-                        <a class="active-menu" href="{{ route('user') }}">Quản Lí User</a>
-                    </li>
+                    @foreach ($menus as $m)
+                    <?php $class = !empty($m['items']) ? 'treeview' : '';?>
+                        <li class="{{ $class }}">
+                            <a class="active-menu" href="{{ Route::has($m['route']) ? route($m['route']) : '#' }}">
+                                <i class="fa {{ $m['icon'] }}"></i>   {{ $m['name'] }}
+                            </a>
+                            @if(!empty($m['items']))
+                            <ul>
+                                @foreach ($m['items'] as $mc)
+                                <li><a href="{{ Route::has($mc['route']) ? route($mc['route']) : '#' }}">
+                                    <i class="fa {{ $mc['icon'] }}"></i>
+                                    {{ $mc['name'] }}
+                                </a></li>
+                                @endforeach
+                            </ul>
+                            @endif
+                        </li>
+                    @endforeach
                 </ul>
+                {{-- <li>
+                    <a class="active-menu" href="{{ route('cate') }}"></i>Quản Lí Danh Mục</a>
+                </li>
 
+                <li>
+                    <a class="active-menu" href="{{ route('user') }}">Quản Lí User</a>
+                </li> --}}
             </div>
 
         </nav>
@@ -97,3 +111,5 @@
 
 </body>
 </html>
+
+

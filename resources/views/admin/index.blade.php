@@ -3,13 +3,5 @@
 
 
 @section('main')
-
-
-
-
-
-
-
-
-
+Hello admin
 @stop

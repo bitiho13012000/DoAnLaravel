@@ -24,9 +24,6 @@
             <li>
                 <a href="{{ route('about') }}">About</a>
             </li>
-            <li>
-                <a href="{{ route('cate') }}">Category</a>
-            </li>
         </ul>
     </nav>
 
