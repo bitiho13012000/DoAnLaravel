@@ -7,7 +7,7 @@
         <h1>Hello, Home!</h1>
         <p>Contents ...</p>
         <p>
-            <a class="btn btn-primary btn-lg">Learn more</a>
+            <a class="btn btn-primary btn-lg" href="{{ route('product.index') }}">Let' go admin</a>
         </p>
     </div>
 </div>
@@ -21,9 +21,10 @@
             @foreach ($top_product as $tp)
                 <div class="col-md-3">
                     <div class="thumbnail">
-                    <img src="{{ url('uploads')}}/{{$tp->image }}" alt="">
+                    <img src="{{ url('uploads')}}/{{$tp->image }}" alt="" style="padding:10px;">
                         <div class="caption">
-                            <h3>{{ $tp->name }}</h3>
+                            <h3 style="text-align: center;font-weight:500">{{ $tp->name }}</h3>
+                            <p style="text-align: center">{{ $tp->price }} $</p>
                         </div>
                     </div>
                 </div>
