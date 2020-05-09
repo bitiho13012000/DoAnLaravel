@@ -5,8 +5,9 @@
 
 
 
-<form action="" method="POST" role="form">
+<form action="{{ route('category.update',['id'=>$model->id]) }}" method="POST" role="form">
     @csrf
+    <input type="hidden" name="_method" value="PUT">
     <!-- bao mat form -->
     <legend>Form Edit</legend>
 

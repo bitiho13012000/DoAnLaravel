@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/','HomeController@index')->name('home');
+
 
 Route::get('gioi-thieu', function () {
     return view('about');
@@ -24,12 +23,17 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin','middleware'=>'auth'],fun
         Route::get('/','AdminController@index')->name('admin');
         Route::get('/logout','AdminController@logout')->name('logout');
 
+        include 'admin.php';
 
-        include 'category.php';
-        include 'user.php';
+
 
     }
 );
 Route::get('admin/login','Admin\AdminController@login')->name('login');
 Route::post('admin/login','Admin\AdminController@post_login')->name('login');
+
+
+
+Route::get('file','FileController@index');
+Route::post('file','Filecontroller@doUpload');
 

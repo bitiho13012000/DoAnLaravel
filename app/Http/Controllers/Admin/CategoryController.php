@@ -29,16 +29,19 @@ class CategoryController extends Controller
             'model' => $model
         ]);
     }
+    public function show($id){
+        echo 'showw';
+    }
 
 
-    public function delete($id)
+    public function destroy($id)
     {
         Category::find($id)->delete();
         return redirect()->back();
 
     }
 
-    public function add()
+    public function create()
     {
 
         return view('admin/category/add');
@@ -46,7 +49,7 @@ class CategoryController extends Controller
     }
 
 
-    public function post_add(Request $request)
+    public function store(Request $request)
     {
         $this->validate($request,[
             'name' => 'required|unique:category,name',
@@ -61,13 +64,14 @@ class CategoryController extends Controller
         ]);
 
         Category::create($request->all());
-        return redirect()->route('cate');
+        return redirect()->route('category.index');
     }
-    public function post_edit($id, Request $request)
+    public function update($id, Request $request)
     {
         $request->offsetUnset('_token');
+        $request->offsetUnset('_method');
         Category::where(['id'=>$id])->update($request->all());
-        return redirect()->route('cate');
+        return redirect()->route('category.index');
 
     }
 }

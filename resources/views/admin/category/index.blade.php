@@ -17,7 +17,7 @@
            <button type="submit" class="btn btn-primary">
                Tìm kiếm
            </button>
-           <a class="btn btn-success" href="{{route('cate_add')}}">Thêm</a>
+           <a class="btn btn-success" href="{{route('category.create')}}">Thêm</a>
        </form>
 
     </div>
@@ -42,8 +42,12 @@
                 <td>{{ $cat->name }}</td>
                 <td>{{ $cat->status }}</td>
                 <td>{{ $cat->created_at}}</td>
-                <td><a href="{{route('cate_edit',['id'=>$cat->id])}}" class="btn btn-xs btn-primary">Edit</a></td>
-                <td><a href="{{route('cate_del',['id'=>$cat->id])}}" class="btn btn-xs btn-danger" onclick="return confirm('OK')">Delete</a></td>
+                <form action="{{ route('category.destroy',['id' =>$cat->id]) }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="_method" value="DELETE">
+                <td><a href="{{route('category.edit',['id'=>$cat->id])}}" class="btn btn-xs btn-primary">Edit</a></td>
+                <td><button class="btn btn-xs btn-danger" onclick="return confirm('OK')">Delete</button></td>
+            </form>
             </tr>
             @endforeach
         </tbody>
