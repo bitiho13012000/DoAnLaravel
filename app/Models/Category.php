@@ -10,7 +10,7 @@ class Category extends Model {
 
     protected $fillable = ['name','status','slug'];
     public function products(){
-        return $this->hasMany(Product::class,'category_id','id');
+        return $this->hasMany(Product::class,'category_id','id')->where('status',1);
     }
 }
 

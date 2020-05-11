@@ -29,6 +29,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Ảnh</th>
+                <th>Danh Mục</th>
                 <th>Status</th>
                 <th>Created at</th>
                 <th></th>
@@ -42,6 +43,7 @@
                 <td>{{ $pro->id }}</td>
                 <td>{{ $pro->name }}</td>
                 <td> <img src="{{ url('uploads') }}/{{ $pro->image }}" ></td>
+                <td>{{ $pro->cat->name }}</td>
                 <td>{{ $pro->status }}</td>
                 <td>{{ $pro->created_at}}</td>
                 <form action="{{ route('product.destroy',['id' =>$pro->id]) }}" method="POST">

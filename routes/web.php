@@ -12,6 +12,7 @@
 */
 
 Route::get('/','HomeController@index')->name('home');
+Route::get('/{slug}','HomeController@view')->name('view');
 
 
 Route::get('gioi-thieu', function () {
@@ -34,6 +35,5 @@ Route::post('admin/login','Admin\AdminController@post_login')->name('login');
 
 
 
-Route::get('file','FileController@index');
-Route::post('file','Filecontroller@doUpload');
+
 

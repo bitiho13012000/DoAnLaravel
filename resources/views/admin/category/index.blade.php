@@ -28,6 +28,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Total Product</th>
                 <th>Status</th>
                 <th>Created at</th>
                 <th></th>
@@ -40,6 +41,7 @@
             <tr>
                 <td>{{ $cat->id }}</td>
                 <td>{{ $cat->name }}</td>
+                <td>{{ $cat->products->count() }}</td>
                 <td>{{ $cat->status }}</td>
                 <td>{{ $cat->created_at}}</td>
                 <form action="{{ route('category.destroy',['id' =>$cat->id]) }}" method="POST">
