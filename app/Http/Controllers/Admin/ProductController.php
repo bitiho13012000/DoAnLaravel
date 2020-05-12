@@ -117,29 +117,10 @@ class ProductController extends Controller
             'price.not_in' => 'Giá phải > 0'
 
         ]);
-        
+
         $request->offsetUnset('_token');
         $request->offsetUnset('_method');
-        $file = $request->file('image');
-        $extension = $file->getClientOriginalExtension();
-        $fileName = time() . '.' . $extension;
-        $file->move(public_path('uploads'), $fileName);
-        $name = $request->name;
-        $slug = $request->slug;
-        $price = $request->price;
-        $sale_price = $request->sale_price;
-        $content = $request->content;
-        $category_id = $request->category_id;
 
-        $product = new Product();
-        $product->image = $fileName;
-        $product ->name = $name;
-        $product ->slug = $slug;
-        $product ->price = $price;
-        $product ->sale_price = $sale_price;
-        $product ->content = $content;
-        $product ->category_id = $category_id;
-        $product->save();
 
         Product::where(['id'=>$id])->update($request->all());
         return redirect()->route('product.index');

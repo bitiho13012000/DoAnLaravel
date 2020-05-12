@@ -24,13 +24,34 @@
             <li>
                 <a href="{{ route('about') }}">About</a>
             </li>
+            <li>
+                <a href="{{ route('cart.view') }}">Cart({{ $cart->total_quantity }})</a>
+            </li>
         </ul>
+
     </nav>
 
     <div class="container">
-
-       @yield('main')
-
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Danh Mục</h3>
+                    </div>
+                    <ul class="list-group">
+                        @foreach($category as $cat)
+                        <li class="list-group-item">
+                            <span class="badge">{{ $cat->products->count() }}</span>
+                            <a href="{{ route('view',['slug'=>$cat->slug]) }}">{{ $cat->name }}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+               @yield('main')
+            </div>
+        </div>
     </div>
 
     <!-- jQuery -->

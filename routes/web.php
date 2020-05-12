@@ -34,6 +34,13 @@ Route::get('admin/login','Admin\AdminController@login')->name('login');
 Route::post('admin/login','Admin\AdminController@post_login')->name('login');
 
 
+Route::group(['prefix' => 'cart'], function () {
+    Route::get('view','CartController@view')->name('cart.view');
+    Route::get('add/{id}','CartController@add')->name('cart.add');
+    Route::get('remove/{id}','CartController@remove')->name('cart.remove');
+    Route::get('update/{id}','CartController@update')->name('cart.update');
+    Route::get('clear','CartController@clear')->name('cart.clear');
 
+});
 
 
