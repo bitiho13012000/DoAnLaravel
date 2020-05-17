@@ -1,0 +1,38 @@
+.navbar-inverse {
+    /* background-color: transparent; */
+    border:none;
+    border-color: none;
+    border-radius: 0;
+}
+ul li a {
+    color: dodgerblue;
+    font-weight: bold;
+}
+
+
+.cart {
+  color:#DF0000;
+  font-weight:bold;
+  background: white;
+  border-style:solid;
+  min-width:2em;
+  text-align:center;
+  line-height:.75em;
+  border-radius:999px;
+  padding:.5em;
+  position:absolute;
+  right: -30%;
+  top: 3%;
+}
+i.fa.fa-shopping-cart {
+    color: red;
+    font-size: 20px;
+}
+.badge{
+
+  font-weight:bold;
+  background-color: chocolate;
+  border-style:solid;
+  border-radius:999px;
+
+}
