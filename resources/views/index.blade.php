@@ -8,7 +8,7 @@
     <div class="col-md-9">
         <div class="row">
             @foreach ($top_product as $tp)
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="thumbnail">
                     <img src="{{ url('uploads')}}/{{$tp->image }}" alt="" style="padding:10px;">
                         <div class="caption text-center">
@@ -23,7 +23,7 @@
                             </p>
                             <p>
                                 <a href="{{ route('view',['slug'=>$tp->slug]) }}" class="btn-xs btn btn-primary">Detail</a>
-                                <a href="{{ route('cart.add',['id'=>$tp->id]) }}" class="btn-xs btn btn-default">Add to cart</a>
+                                <a href="{{ route('cart.add',['id'=>$tp->id]) }}" class="btn-xs btn btn-success">Add to cart</a>
                             </p>
                         </div>
                     </div>

@@ -24,7 +24,7 @@
                 </p>
                 <p>
                     <a href="{{ route('view',['slug'=>$tp->slug]) }}" class="btn-xs btn btn-primary">Detail</a>
-                    <a href="#" class="btn-xs btn btn-default">Action</a>
+                    <a href="{{ route('cart.add',['id'=>$tp->id]) }}"class="btn-xs btn btn-success">Add to cart</a>
                 </p>
             </div>
         </div>

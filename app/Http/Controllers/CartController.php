@@ -8,7 +8,7 @@ use App\Models\Product;
 
 class CartController extends Controller
 {
-
+  
     public function view(){
         return view('cart');
     }

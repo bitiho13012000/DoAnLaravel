@@ -8,6 +8,8 @@ class CartHelper
     public $total_quantity = 0;
     public $total_price = 0;
 
+
+
     public function __construct()
     {
         $this->items = session('cart') ? session('cart') : [];
@@ -52,6 +54,7 @@ class CartHelper
         session(['cart' => '']);
 
     }
+
     private function get_total_price(){
         $t = 0;
         foreach($this->items as $item){
@@ -66,6 +69,7 @@ class CartHelper
          }
          return $t;
     }
+   
 }
 
 
