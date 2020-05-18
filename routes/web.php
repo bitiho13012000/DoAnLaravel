@@ -12,7 +12,9 @@
 */
 
 Route::get('/','HomeController@index')->name('home');
-// Route::get('home-logout','HomeController@logout')->name('home.logout');
+Route::get('home-login','HomeController@login')->name('home.login');
+// Route::get('home-login','HomeController@post_login')->name('home.login');
+
 
 Route::get('/{slug}','HomeController@view')->name('view');
 
@@ -44,6 +46,4 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('clear','CartController@clear')->name('cart.clear');
 
 });
-
-// Route::get('add_account', 'Admin\UserController@create')->name('add_account');
 

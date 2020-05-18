@@ -6,7 +6,7 @@
 
 
 
-<form action="" method="POST" role="form">
+<form action="{{ route('user.store') }}" method="POST" role="form">
     @csrf
     <!-- bao mat form -->
     <legend>Thêm user</legend>

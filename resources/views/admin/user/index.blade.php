@@ -17,7 +17,7 @@
            <button type="submit" class="btn btn-primary">
                Tìm kiếm
            </button>
-           <a class="btn btn-success" href="{{route('user_add')}}">Thêm</a>
+           <a class="btn btn-success" href="{{route('user.create')}}">Thêm</a>
        </form>
 
     </div>
@@ -42,8 +42,8 @@
                 <td>{{ $cat->name }}</td>
                 <td>{{ $cat->email }}</td>
                 <td>{{ $cat->created_at}}</td>
-                <td><a href="{{route('user_edit',['id'=>$cat->id])}}" class="btn btn-xs btn-primary">Edit</a></td>
-                <td><a href="{{route('user_del',['id'=>$cat->id])}}" class="btn btn-xs btn-danger" onclick="return confirm('OK')">Delete</a></td>
+                <td><a href="{{route('user.edit',['id'=>$cat->id])}}" class="btn btn-xs btn-primary">Edit</a></td>
+                <td><a href="{{route('user.destroy',['id'=>$cat->id])}}" class="btn btn-xs btn-danger" onclick="return confirm('OK')">Delete</a></td>
             </tr>
             @endforeach
         </tbody>

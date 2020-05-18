@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Banner;
 class HomeController extends Controller
 {
     public function index(){
@@ -16,11 +16,12 @@ class HomeController extends Controller
 
         return view('index',compact('top_product','sale_product'));
     }
-    // public function logout(){
-    //     Auth::guard('cus')->logout();
-    //     return redirect()->route('home');
-    // }
 
+    public function login(){
+        return view('login');
+    }
+    // public function post_login(){
+    // }
     public function view($slug) {
         $model = Category::where('slug',$slug)->first();
         $product = Product::where('slug',$slug)->first();
@@ -29,8 +30,13 @@ class HomeController extends Controller
         }
         else if($product) {
             return view('product-detail',['model'=>$product]);
-        } else {
-         return view('404');
+        }
+        else{
+         return view('about');
         }
     }
+
+
+
+
 }
