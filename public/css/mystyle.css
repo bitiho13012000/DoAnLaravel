@@ -1,14 +1,28 @@
 .navbar-inverse {
-    /* background-color: transparent; */
     border:none;
     border-color: none;
     border-radius: 0;
+    background-color: transparent;
+    padding-top: 10px;
 }
 ul li a {
     color: dodgerblue;
     font-weight: bold;
-}
+    font-family: cursive;
 
+}
+body{
+    font-family: cursive;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color:  royalblue;
+    font-weight: bold;
+    font-family: cursive;
+    font-size: 18px;
+}
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: darkred;
+}
 
 .cart {
   color:#DF0000;
@@ -21,12 +35,12 @@ ul li a {
   border-radius:999px;
   padding:.5em;
   position:absolute;
-  right: -30%;
+  right: -40%;
   top: 3%;
 }
 i.fa.fa-shopping-cart {
     color: red;
-    font-size: 20px;
+    font-size: 25px;
 }
 .badge{
 
@@ -35,4 +49,7 @@ i.fa.fa-shopping-cart {
   border-style:solid;
   border-radius:999px;
 
+}
+.container.slide {
+    padding-bottom: 35px;
 }

@@ -6,7 +6,7 @@ Route::resources([
     'product' => 'ProductController',
     'account' => 'UserController',
     'banner' => 'BannerController',
-
+    'user' => 'UserController'
 ]);
 
 ?>

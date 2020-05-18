@@ -8,7 +8,7 @@
             <tr>
                 <th>STT</th>
                 <th>Tên</th>
-                <th style="width:20%">Ảnh</th>
+                <th style="width:20%">Image</th>
                 <th>Giá</th>
                 <th style="width:20%">SL</th>
                 <th style="width:13%">Thành Tiền</th>
@@ -52,7 +52,7 @@
     <div class="text-right">
         <h3>Tổng tiền: {{ number_format($cart->total_price) }}$</h3>
         <a href="{{ route('cart.clear') }}" class="btn btn-danger">Xóa hết</a>
-        <a href="{{ route('cart.clear') }}" class="btn btn-success">Đặt hàng</a>
+        <a href="#" class="btn btn-success">Đặt hàng</a>
     </div>
 </div>
 </div>

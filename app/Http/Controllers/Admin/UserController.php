@@ -6,30 +6,28 @@ namespace App\Http\Controllers\Admin;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Customer;
+
 
 class UserController extends Controller
 {
-   
+
     public function index()
     {
-
-        // $cats = Category::all();
         $cats = User::paginate(5);
-        return view('admin/user/index',[
+        return view('admin.user.index',[
             'cats' => $cats
         ]);
     }
 
-    public function add()
+    public function create()
     {
-
-        return view('admin/user/add');
+        $cats = User::all();
+        return view('admin.user.add',compact('$cats'));
 
     }
 
 
-    public function post_add(Request $request)
+    public function store(Request $request)
     {
         $this->validate($request,[
             'name' => 'required',
@@ -49,8 +47,26 @@ class UserController extends Controller
 
         $password = bcrypt($request->password);
         $request->merge(['password' => $password]);
+
         User::create($request->all());
-        return redirect()->route('user');
+        return redirect()->route('user.index');
+
+    }
+    public function show($id){
+        echo 'showw';
+    }
+    public function edit()
+    {
+
+    }
+    public function destroy($id)
+    {
+        User::find($id)->delete();
+        return redirect()->route('user.index');
+
+    }
+    public function update(){
+
     }
 }
 ?>
