@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Banner;
+use App\User;
+
 class HomeController extends Controller
 {
     public function index(){
@@ -20,8 +21,29 @@ class HomeController extends Controller
     public function login(){
         return view('login');
     }
-    // public function post_login(){
-    // }
+    public function post_login(Request $req){
+        $this->validate($req,[
+            'email' => 'required|email',
+            'password' => 'required|min:6|max:20'
+        ],[
+            'email.required' => 'vui long nhap lai',
+            'email.email' => 'email ko dung',
+            'password.required' => 'vui long nhap lai',
+
+        ]);
+
+     $cre = array('email'=>$req->email,'password'=>$req->password);
+     if(Auth::attempt($cre)){
+        return redirect()->route('home')->with(['flag'=>'success','message'=>'dang nhap thanh cong']);
+
+     }else {
+        return redirect()->back()->with(['flag'=>'danger','message'=>'dang nhap 0 thanh cong']);
+
+     }
+     User::create($req->all());
+
+    }
+
     public function view($slug) {
         $model = Category::where('slug',$slug)->first();
         $product = Product::where('slug',$slug)->first();
@@ -32,10 +54,13 @@ class HomeController extends Controller
             return view('product-detail',['model'=>$product]);
         }
         else{
-         return view('about');
+            return redirect()->route('home');
         }
     }
-
+    public function dangxuat(){
+        Auth::logout();
+        return redirect()->route('home');
+    }
 
 
 

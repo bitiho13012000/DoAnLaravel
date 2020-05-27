@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
+
 class ProductController extends Controller
 {
 
@@ -52,31 +54,13 @@ class ProductController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-
-            $this->validate($request,[
-            'name' => 'required',
-            'category_id' => 'required',
-            'slug' => 'required|unique:product,slug',
-            'price' => 'required|numeric|min:0|not_in:0',
-            'sale_price' => 'required|numeric|min:0|lt:price'
-
-        ],[
-            'name.required' => 'Tên sản phẩm không được để trống',
-            'name.unique' => 'Tên sản phẩm đã tồn tại',
-            'slug.required' => 'Tên link không được để trống',
-            'slug.unique' => 'Tên link đã tồn tại',
-            'sale_price.lt' => 'Giá KM < giá gốc',
-            'price.min' => 'Giá phải > 0',
-            'price.not_in' => 'Giá phải > 0'
-
-        ]);
-
         $file = $request->file('image');
         $extension = $file->getClientOriginalExtension();
         $fileName = time() . '.' . $extension;
         $file->move(public_path('uploads'), $fileName);
+        
         $name = $request->name;
         $slug = $request->slug;
         $price = $request->price;
@@ -98,31 +82,23 @@ class ProductController extends Controller
 
         return redirect()->route('product.index');
     }
-    public function update($id, Request $request)
+    public function update($id, ProductRequest $request)
     {
-        $this->validate($request,[
-            'name' => 'required',
-            'category_id' => 'required',
-            'slug' => 'required|unique:product,slug,'.$id,
-            'price' => 'required|numeric|min:0|not_in:0',
-            'sale_price' => 'required|numeric|min:0|lt:price'
-
-        ],[
-            'name.required' => 'Tên sản phẩm không được để trống',
-            'name.unique' => 'Tên sản phẩm đã tồn tại',
-            'slug.required' => 'Tên link không được để trống',
-            'slug.unique' => 'Tên link đã tồn tại',
-            'sale_price.lt' => 'Giá KM < giá gốc',
-            'price.min' => 'Giá phải > 0',
-            'price.not_in' => 'Giá phải > 0'
-
-        ]);
-
+        $file = $request->file('image');
+        $extension = $file->getClientOriginalExtension();
+        $fileName = time() . '.' . $extension;
+        $file->move(public_path('uploads'), $fileName);
         $request->offsetUnset('_token');
         $request->offsetUnset('_method');
 
 
-        Product::where(['id'=>$id])->update($request->all());
+        $rs = $request->all();
+        $rs['image']=$fileName;
+
+        Product::where(['id'=>$id])->update($rs);
+        // $product = Product::find($id);
+        // $product->image = $fileName;
+        // $product->save();
         return redirect()->route('product.index');
 
     }

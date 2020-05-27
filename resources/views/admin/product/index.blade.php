@@ -5,7 +5,7 @@
 
 <div class="panel panel-default">
     <!-- Default panel contents -->
-    <div class="panel-heading">Product List</div>
+    <div class="panel-heading">{{ trans('product.lb_product_list') }}</div>
     <div class="panel-body">
 
        <form action="" method="POST" role="form">
@@ -27,11 +27,11 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Ảnh</th>
-                <th>Danh Mục</th>
-                <th>Status</th>
-                <th>Created at</th>
+                <th>{{ trans('product.lb_product_name') }}</th>
+                <th>{{ trans('product.lb_product_image') }}</th>
+                <th>{{ trans('product.lb_product_category') }}</th>
+                <th>{{ trans('product.lb_product_status') }}</th>
+                <th>{{ trans('product.lb_product_created') }}</th>
                 <th></th>
                 <th></th>
             </tr>

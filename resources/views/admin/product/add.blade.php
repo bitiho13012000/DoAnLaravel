@@ -13,14 +13,19 @@
                     <label for="">Tên Sản Phẩm</label>
                     <input type="text" class="form-control" name="name" id="name" >
                     @if($errors->has('name'))
-                             {{ $errors->first('name') }}
+                    <div class="alert alert-danger">
+                        {{ $errors->first('name') }}
+                    </div>
+
                      @endif
                 </div>
                 <div class="form-group">
                     <label for="">Đường dẫn</label>
                     <input type="text" class="form-control" name="slug" id="slug">
                     @if($errors->has('slug'))
-                    {{ $errors->first('slug') }}
+                    <div class="alert alert-danger">
+                        {{ $errors->first('slug') }}
+                    </div>
                 @endif
                 </div>
                 <div class="form-group">
@@ -36,7 +41,6 @@
                         <option value="">Chọn một</option>
                         @foreach ($cats as $cat)
                         <option value="{{ $cat -> id }}">{{ $cat->name }}</option>
-
                         @endforeach
 
                     </select>
@@ -45,14 +49,18 @@
                     <label for="">Giá sản phẩm</label>
                     <input type="text" class="form-control" name="price" >
                     @if($errors->has('price'))
-                    {{ $errors->first('price') }}
+                    <div class="alert alert-danger">
+                        {{ $errors->first('price') }}
+                    </div>
             @endif
                 </div>
                 <div class="form-group">
                     <label for="">Giá khuyến mãi</label>
                     <input type="text" class="form-control" name="sale_price" >
                     @if($errors->has('sale_price'))
-                    {{ $errors->first('sale_price') }}
+                    <div class="alert alert-danger">
+                        {{ $errors->first('sale_price') }}
+                    </div>
             @endif
                 </div>
                 <div class="form-group">

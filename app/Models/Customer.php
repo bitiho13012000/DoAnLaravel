@@ -3,9 +3,8 @@
 namespace App\Models;
 
 use App\Http\Middleware\Authenticate;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Autheticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\Customer as Authenticatable;
 
 
 
