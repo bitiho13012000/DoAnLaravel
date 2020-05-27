@@ -13,7 +13,8 @@
 
 Route::get('/','HomeController@index')->name('home');
 Route::get('home-login','HomeController@login')->name('home.login');
-// Route::get('home-login','HomeController@post_login')->name('home.login');
+Route::post('home-login','HomeController@post_login')->name('home.login');
+Route::post('/dangxuat','HomeController@dangxuat')->name('dangxuat');
 
 
 Route::get('/{slug}','HomeController@view')->name('view');
@@ -29,9 +30,6 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin','middleware'=>'auth'],fun
         Route::get('/logout','AdminController@logout')->name('logout');
 
         include 'admin.php';
-
-
-
     }
 );
 Route::get('admin/login','Admin\AdminController@login')->name('login');

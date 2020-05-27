@@ -16,6 +16,7 @@ class CustomerMiddleWare
      */
 
     private $cus;
+
     public function __construct()
     {
 
@@ -27,7 +28,7 @@ class CustomerMiddleWare
         return $next($request);
 
         }
-        return redirect()->route('home')->with('errow','ban can dang nhap');
+        return redirect()->route('home')->with('error','ban can dang nhap');
 
     }
 }

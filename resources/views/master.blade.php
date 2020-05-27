@@ -23,10 +23,15 @@
             <li><a href="{{ route('cart.view') }}"><i class="fa fa-shopping-cart"></i> <span class="cart">{{ $cart->total_quantity }}</span></a>
             </li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{ route('home.login') }}"><span class="glyphicon glyphicon-user"></span>Đăng Nhập</a></li>
-            <li><a href="#"><span class="fa fa-group"></span>Đăng Ký</a></li>
 
+          <ul class="nav navbar-nav navbar-right">
+            @if (Auth::check())
+                <li><a href="#">Chào {{ Auth::user()->name }}</a></li>
+                <li><a href="{{ route('dangxuat') }}">Đăng xuất</a></li>
+            @else
+                <li><a href="{{ route('home.login') }}"><span class="glyphicon glyphicon-user"></span>Đăng Nhập</a></li>
+                <li><a href="#"><span class="fa fa-group"></span>Đăng Ký</a></li>
+            @endif
           </ul>
         </div>
       </nav>
