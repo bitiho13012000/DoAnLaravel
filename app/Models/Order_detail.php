@@ -9,13 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 
 
 
-class Customer extends Model
+class Order_detail extends Model
 {
 
     use Notifiable;
 
-    protected $table = 'customer';
+    protected $table = 'order_detail';
 
-    protected $fillable = ['name','email','password','phone','address'];
+    protected $fillable = ['order_id','product_id','quantity','price'];
 
 }

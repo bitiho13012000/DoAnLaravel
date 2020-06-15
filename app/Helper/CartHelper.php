@@ -8,8 +8,6 @@ class CartHelper
     public $total_quantity = 0;
     public $total_price = 0;
 
-
-
     public function __construct()
     {
         $this->items = session('cart') ? session('cart') : [];
@@ -24,7 +22,6 @@ class CartHelper
            'price' => $product->sale_price ? $product->sale_price : $product->price,
            'image' => $product->image,
            'quantity' => $quantity
-
        ];
        if(isset($this->items[$product->id])){
             $this->items[$product->id]['quantity']+=$quantity;
@@ -69,7 +66,7 @@ class CartHelper
          }
          return $t;
     }
-   
+
 }
 
 
