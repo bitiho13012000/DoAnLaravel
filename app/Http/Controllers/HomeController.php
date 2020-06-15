@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\CartHelper;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Models\Customer;
+use App\Models\Order;
+use App\Models\Order_detail;
+use Illuminate\Contracts\Session\Session;
+
 
 class HomeController extends Controller
 {
@@ -40,7 +46,7 @@ class HomeController extends Controller
         return redirect()->back()->with(['flag'=>'danger','message'=>'dang nhap 0 thanh cong']);
 
      }
-     User::create($req->all());
+     Customer::create($req->all());
 
     }
 
@@ -62,6 +68,47 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
+    public function dathang(){
 
+        return view('dathang');
 
+    }
+    public function postdathang(Request $req, CartHelper $cart){
+   
+
+        $cus = new Customer();
+        $cus->name = $req->name;
+        $cus->email = $req->email;
+        $cus->phone = $req->phone;
+        $cus->address = $req->address;
+        $cus->save();
+
+        $order = new Order();
+        $order->id = $req->id;
+        $order->customer_id = $cus->id;
+        $order->email = $req->email;
+        $order->phone = $req->phone;
+        $order->address = $req->address;
+        $order->save();
+
+        foreach ($cart->items as $product_id => $item) {
+            $quantity = $item['quantity'];
+            $price = $item['price']*$item['quantity'];
+            $order_id = $order->id;
+            Order_detail::create([
+                'order_id' => $order_id,
+                'product_id' => $product_id,
+                'price' => $price,
+                'quantity' => $quantity
+            ]);
+
+        }
+        session(['cart'=>'']);
+        // Session::forget('cart');
+        return redirect()->route('thanhcong')->with('thanhcong','dat hang thanh cong');
+
+    }
+    public function thanhcong(){
+        return view('thanhcong');
+    }
 }

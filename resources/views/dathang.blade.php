@@ -1,7 +1,6 @@
 @extends('master')
 @section('main')
 
-
 <div class="panel panel-default">
     <table class="table">
         <thead>
@@ -36,7 +35,7 @@
                         {{ $item['price']*$item['quantity'] }}$
                     </td>
                     <td>
-                        <a href="{{ route('cart.remove',['id'=>$item['id']]) }}" class="btn  btn-danger"><i class="fa fa-trash"></i></a>
+
                     </td>
 
                 </tr>
@@ -51,11 +50,32 @@
 <div class="panel-footer">
     <div class="text-right">
         <h3>Tổng tiền: {{ number_format($cart->total_price) }}$</h3>
-        <a href="{{ route('cart.clear') }}" class="btn btn-danger">Xóa hết <i class="fa fa-trash"></i></a>
-        <a href="{{ route('dathang') }}" class="btn btn-success">Đặt hàng</a>
+
     </div>
 </div>
 </div>
+<h1>Đặt Hàng</h1>
+
+
+<form action="{{ route('dathang') }}" method="post">
+    @csrf
+    <div class="form-group">
+        <div class="col-sm-6">
+       <label for="myEmail">Họ và Tên</label>
+       <input type="text" name="name"  class="form-control" >
+       <label for="myPassword">Email</label>
+       <input type="email" name="email"  class="form-control" >
+       <label for="myEmail">Số điện thoại</label>
+       <input type="text" name="phone"  class="form-control" >
+       <label for="myEmail">Địa chỉ</label>
+       <input type="text" name="address"  class="form-control">
+            <br>
+       <button type="submit" class="btn btn-primary">Đặt Hàng</button>
+        </div>
+    </div>
+ </form>
+
+
 @stop
 
 <style>

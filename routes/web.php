@@ -15,6 +15,9 @@ Route::get('/','HomeController@index')->name('home');
 Route::get('home-login','HomeController@login')->name('home.login');
 Route::post('home-login','HomeController@post_login')->name('home.login');
 Route::post('/dangxuat','HomeController@dangxuat')->name('dangxuat');
+Route::get('dat-hang','HomeController@dathang')->name('dathang');
+Route::post('dat-hang','HomeController@postdathang')->name('dathang');
+Route::get('dathang-thanhcong','HomeController@thanhcong')->name('thanhcong');
 
 
 Route::get('/{slug}','HomeController@view')->name('view');
@@ -44,4 +47,5 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('clear','CartController@clear')->name('cart.clear');
 
 });
+
 

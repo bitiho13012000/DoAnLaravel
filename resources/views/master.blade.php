@@ -48,15 +48,15 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
               <div class="item active">
-                <img src="{{ url('img/slideshow1.jpg') }}" alt="Los Angeles">
+                <img src="{{ url('img/1.jfif') }}" alt="Los Angeles">
               </div>
 
               <div class="item">
-                <img src="{{ url('img/slideshow2.jpg') }}" alt="Chicago">
+                <img src="{{ url('img/2.jfif') }}" alt="Chicago">
               </div>
 
               <div class="item">
-                <img src="{{ url('img/slideshow3.jpg') }}" alt="New York">
+                <img src="{{ url('img/3.jfif') }}" alt="New York">
               </div>
             </div>
 
@@ -95,7 +95,42 @@
         </div>
     </div>
 
+    <footer>
+        <div class="container ft-pr">
+            <div class="jumbotron">
+                <div class="row ft-row">
+                    <div class="col-md-3">
+                        <h4>SOME THING ME</h4>
 
+                        <p>Itmeo is a software and design company. Our team creates useful tools for web designers and developers. <br> <strong> Our team creates useful tools for web designers and developers.</strong> </p>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>OTHER PROJECTS</h4>
+                        <p>Phoneix Starup</p>
+                        <p>Avenger EndGame</p>
+                        <p>Captain American</p>
+                        <p>Black Widow</p>
+                        <p>IronMan 1</p>
+                        <p>Doctor Strange</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>GET IN TOUCH</h4>
+                        <p>About me</p>
+                        <p>Contact us</p>
+
+
+                    </div>
+                    <div class="col-md-3">
+                        <h4>FOLLOW ME</h4>
+                        <p>Facebook <i class="fa fa-facebook-square"></i></p>
+                        <p>fb.com/biti.it</p>
+                        <p><i class="fa fa-cloud" style="font-size:60px;color:lightblue;text-shadow:2px 2px 4px #000000;"></i></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Bootstrap JavaScript -->
