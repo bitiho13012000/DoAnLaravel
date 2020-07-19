@@ -37,8 +37,12 @@ class AdminController extends Controller
                 // thuc hien login
 
                 if(Auth::attempt($request->only('email','password'),$request->has('rmb'))){
-                    return redirect()->route('category.index');
-                }else{
+                    return redirect()->route('home');
+                }
+                // else if(
+
+                // )
+                else{
                     return redirect()->back();
                 }
 
