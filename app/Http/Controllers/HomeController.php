@@ -19,6 +19,7 @@ class HomeController extends Controller
     public function index(){
 
         $top_product = Product::limit(10)->orderBy('id','DESC')->get();
+        $top_product = Product::Paginate(6);
         $sale_product = Product::where('sale_price','>',0)->where('status',1)->limit(10)->orderBy('id','DESC')->get();
 
         return view('index',compact('top_product','sale_product'));
@@ -70,11 +71,15 @@ class HomeController extends Controller
 
     public function dathang(){
 
+        // $user =  Auth::user();
+        // return response()->json([
+        //     "User" => $user
+        // ], 200);
         return view('dathang');
 
     }
     public function postdathang(Request $req, CartHelper $cart){
-   
+
 
         $cus = new Customer();
         $cus->name = $req->name;

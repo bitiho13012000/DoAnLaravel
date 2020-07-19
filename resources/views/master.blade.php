@@ -26,7 +26,7 @@
 
           <ul class="nav navbar-nav navbar-right">
             @if (Auth::check())
-                <li><a href="#">Chào {{ Auth::user()->name }}</a></li>
+                <li><a href="{{ route('category.index') }}">Chào {{ Auth::user()->name }}</a></li>
                 <li><a href="{{ route('dangxuat') }}">Đăng xuất</a></li>
             @else
                 <li><a href="{{ route('home.login') }}"><span class="glyphicon glyphicon-user"></span>Đăng Nhập</a></li>
@@ -82,7 +82,7 @@
                     <ul class="list-group">
                         @foreach($category as $cat)
                         <li class="list-group-item">
-                            <span class="badge">{{ $cat->products->count() }}</span>
+                            
                             <a href="{{ route('view',['slug'=>$cat->slug]) }}">{{ $cat->name }}</a>
                         </li>
                         @endforeach
