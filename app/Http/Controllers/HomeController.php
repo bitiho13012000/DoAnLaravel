@@ -12,7 +12,7 @@ use App\Models\Customer;
 use App\Models\Order;
 use App\Models\Order_detail;
 use Illuminate\Contracts\Session\Session;
-
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -60,7 +60,8 @@ class HomeController extends Controller
         else if($product) {
             return view('product-detail',['model'=>$product]);
         }
-        else{
+
+        else {
             return redirect()->route('home');
         }
     }
@@ -116,4 +117,19 @@ class HomeController extends Controller
     public function thanhcong(){
         return view('thanhcong');
     }
+
+    public function search(Request $req){
+        $query = $req->input('query');
+        $product = Product::where('name','like','%'.$query.'%')->get();
+        return view('search')->with('product',$product);
+    }
+    public function unactive($id){
+        DB::table('orders')->where('id',$id)->update(['status'=>0]);
+        return redirect()->route('order.index');
+    }
+    public function active($id){
+        DB::table('orders')->where('id',$id)->update(['status'=>1]);
+        return redirect()->route('order.index');
+    }
+
 }

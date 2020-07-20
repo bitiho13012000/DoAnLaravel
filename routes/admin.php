@@ -9,7 +9,8 @@ Route::resources([
     'banner' => 'BannerController',
     'user' => 'UserController',
     'order' => 'OrdersController',
-    'order_detail' => 'OrderDetailController'
+    'order_detail' => 'OrderDetailController',
+    'dashboard' => 'DashboardController'
 ]);
 
 ?>

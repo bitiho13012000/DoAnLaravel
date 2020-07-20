@@ -27,7 +27,7 @@
                     <td>{{ $item['price'] }}$</td>
                     <td>
                         <form action="{{ route('cart.update',['id'=>$item['id']]) }}" method="get">
-                            <input type="number"  name="quantity" value="{{ $item['quantity'] }}" >
+                            <input type="number"  name="quantity" min="1" max="10" value="{{ $item['quantity'] }}" >
                             <input type="submit" class="btn  btn-primary" value="Lưu">
                         </form>
 

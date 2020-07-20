@@ -50,3 +50,7 @@ Route::group(['prefix' => 'cart'], function () {
 });
 
 
+Route::get('/search','HomeController@search')->name('search');
+
+Route::get('/unactive/{id}','HomeController@unactive');
+Route::get('/active/{id}','HomeController@active');
