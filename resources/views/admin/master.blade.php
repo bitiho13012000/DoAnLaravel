@@ -58,6 +58,15 @@
       <!-- Nav Item - Pages Collapse Menu -->
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('dashboard.index') }}" >
+                <i class="fas fa-fw fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+
+        </li>
+
+
+        <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Category</span>

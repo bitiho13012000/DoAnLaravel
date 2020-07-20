@@ -22,6 +22,7 @@
                 <th>Customer ID</th>
                 <th>Phone</th>
                 <th>Address</th>
+                <th>Status</th>
                 <th>Created_at</th>
                 <th>Update_at</th>
             </tr>
@@ -35,6 +36,16 @@
                 <td>{{ $or->customer_id }}</td>
                 <td>{{ $or->phone }}</td>
                 <td>{{ $or->address }}</td>
+                <td>
+                    <span class="text-ellipsis">
+                        @if($or->status == 0)
+                        <a href="{{ url('/active/'.$or->id) }}"><button>Chưa xác nhận</button></a>
+                        @else
+                        <a href="{{ url('/unactive/'.$or->id) }}"><button>Xác nhận</button></a>
+                        @endif
+                    </span>
+                </td>
+
                 <td>{{ $or->created_at}}</td>
                 <td>{{ $or->updated_at}}</td>
 
