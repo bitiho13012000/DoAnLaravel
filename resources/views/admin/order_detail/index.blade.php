@@ -17,6 +17,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th>STT</th>
                 <th>Order_id</th>
                 <th>Product_id</th>
                 <th>Quantity</th>
@@ -29,6 +30,7 @@
         <tbody>
             @foreach($order_detail as $or_dt)
             <tr>
+                <td>{{ inc_number($i) }}</td>
                 <td>{{ $or_dt->order_id}}</td>
                 <td>{{ $or_dt->product_id}}</td>
                 <td>{{ $or_dt->quantity}}</td>

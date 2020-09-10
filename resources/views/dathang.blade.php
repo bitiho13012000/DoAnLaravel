@@ -63,12 +63,37 @@
         <div class="col-sm-6">
        <label for="myEmail">Họ và Tên</label>
        <input type="text" name="name"  class="form-control" >
+       @if($errors->has('name'))
+       <div class="alert alert-danger">
+           {{ $errors->first('name') }}
+       </div>
+
+        @endif
+
        <label for="myPassword">Email</label>
        <input type="email" name="email"  class="form-control" >
+       @if($errors->has('email'))
+                    <div class="alert alert-danger">
+                        {{ $errors->first('email') }}
+                    </div>
+
+                     @endif
        <label for="myEmail">Số điện thoại</label>
-       <input type="text" name="phone"  class="form-control" >
+       <input type="number" name="phone"  class="form-control" >
+       @if($errors->has('phone'))
+                    <div class="alert alert-danger">
+                        {{ $errors->first('phone') }}
+                    </div>
+
+                     @endif
        <label for="myEmail">Địa chỉ</label>
        <input type="text" name="address"  class="form-control">
+       @if($errors->has('address'))
+                    <div class="alert alert-danger">
+                        {{ $errors->first('address') }}
+                    </div>
+
+                     @endif
             <br>
        <button type="submit" class="btn btn-primary">Đặt Hàng</button>
         </div>

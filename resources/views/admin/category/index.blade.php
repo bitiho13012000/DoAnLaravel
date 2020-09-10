@@ -17,7 +17,7 @@
            <button type="submit" class="btn btn-primary">
                Tìm kiếm
            </button>
-           <a class="btn btn-success" href="{{route('category.create')}}">Thêm</a>
+           <a class="btn btn-success" href="{{ route('category.create') }}">Thêm</a>
        </form>
 
     </div>
@@ -26,6 +26,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th>STT</th>
                 <th>ID</th>
                 <th>{{ trans('category.lb_category_name') }}</th>
                 <th>{{ trans('category.lb_category_totalproduct') }}</th>
@@ -39,11 +40,12 @@
         <tbody>
             @foreach($cats as $cat)
             <tr>
+                <td>{{ inc_number($i) }}</td>
                 <td>{{ $cat->id }}</td>
                 <td>{{ $cat->name }}</td>
                 <td>{{ $cat->products->count() }}</td>
                 <td>{{ $cat->status }}</td>
-                <td>{{ $cat->created_at}}</td>
+                <td>{{ $cat->created_at }}</td>
                 <form action="{{ route('category.destroy',['id' =>$cat->id]) }}" method="POST">
                     @csrf
                     <input type="hidden" name="_method" value="DELETE">

@@ -17,6 +17,7 @@
     <table class="table">
         <thead>
             <tr>
+                <td>STT</td>
                 <th>ID</th>
                 <th>Email</th>
                 <th>Customer ID</th>
@@ -31,6 +32,7 @@
         <tbody>
             @foreach($order as $or)
             <tr>
+                <td>{{ inc_number($i) }}</td>
                 <td>{{ $or->id }}</td>
                 <td>{{ $or->email }}</td>
                 <td>{{ $or->customer_id }}</td>
@@ -39,9 +41,9 @@
                 <td>
                     <span class="text-ellipsis">
                         @if($or->status == 0)
-                        <a href="{{ url('/active/'.$or->id) }}"><button>Chưa xác nhận</button></a>
+                        <a href="{{ url('/active/'.$or->id) }}"><button class="btn btn-success">V</button></a>
                         @else
-                        <a href="{{ url('/unactive/'.$or->id) }}"><button>Xác nhận</button></a>
+                        <a href="{{ url('/unactive/'.$or->id) }}"><button class="btn btn-danger">X</button></a>
                         @endif
                     </span>
                 </td>

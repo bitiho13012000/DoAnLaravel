@@ -26,6 +26,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th>STT</th>
                 <th>ID</th>
                 <th>{{ trans('product.lb_product_name') }}</th>
                 <th>{{ trans('product.lb_product_image') }}</th>
@@ -40,6 +41,7 @@
         <tbody>
             @foreach($products as $pro)
             <tr>
+                <td>{{ inc_number($i) }}</td>
                 <td>{{ $pro->id }}</td>
                 <td>{{ $pro->name }}</td>
                 <td> <img src="{{ url('uploads') }}/{{ $pro->image }}" ></td>

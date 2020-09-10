@@ -20,7 +20,7 @@ Route::post('/dangxuat','HomeController@dangxuat')->name('dangxuat');
 Route::post('dat-hang','HomeController@postdathang')->name('dathang');
 Route::get('dathang-thanhcong','HomeController@thanhcong')->name('thanhcong');
 
-
+Route::get('/search','HomeController@search')->name('search');
 Route::get('/{slug}','HomeController@view')->name('view');
 
 
@@ -48,9 +48,6 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('clear','CartController@clear')->name('cart.clear');
 
 });
-
-
-Route::get('/search','HomeController@search')->name('search');
 
 Route::get('/unactive/{id}','HomeController@unactive');
 Route::get('/active/{id}','HomeController@active');
