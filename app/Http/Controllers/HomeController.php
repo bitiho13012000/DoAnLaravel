@@ -17,12 +17,12 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function index(){
-
         $top_product = Product::limit(10)->orderBy('id','DESC')->get();
         $top_product = Product::Paginate(6);
+        // cau hinh hang so trong file env
         $sale_product = Product::where('sale_price','>',0)->where('status',1)->limit(10)->orderBy('id','DESC')->get();
 
-        return view('index',compact('top_product','sale_product'));
+        return view('index', compact('top_product','sale_product'));
     }
 
     public function login(){
@@ -81,6 +81,18 @@ class HomeController extends Controller
     }
     public function postdathang(Request $req, CartHelper $cart){
 
+        $this->validate($req,[
+            'email' => 'required|email',
+            'name' => 'required',
+            'phone' => 'required',
+            'address' => 'required'
+        ],[
+            'email.required' => 'vui long nhap lai',
+            'email.email' => 'email ko dung',
+            'name.required' => 'vui long nhap ho ten',
+            'phone.required' => 'vui long nhap sdt',
+            'address.required' => 'vui long nhap dia chi'
+        ]);
 
         $cus = new Customer();
         $cus->name = $req->name;
@@ -98,7 +110,10 @@ class HomeController extends Controller
         $order->save();
 
         foreach ($cart->items as $product_id => $item) {
-            $quantity = $item['quantity'];
+            if(($item['quantity'] ?? 1) < 1 )
+                $quantity = 1;
+            else
+                $quantity = $item['quantity'];
             $price = $item['price']*$item['quantity'];
             $order_id = $order->id;
             Order_detail::create([
@@ -110,8 +125,10 @@ class HomeController extends Controller
 
         }
         session(['cart'=>'']);
-        // Session::forget('cart');
-        return redirect()->route('thanhcong')->with('thanhcong','dat hang thanh cong');
+
+
+
+        return redirect()->route('thanhcong');
 
     }
     public function thanhcong(){

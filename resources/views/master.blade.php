@@ -26,10 +26,10 @@
 
           <ul class="nav navbar-nav navbar-right">
             @if (Auth::check())
-                <li><a href="{{ route('category.index') }}">Chào {{ Auth::user()->name }}</a></li>
+                <li><a href="{{ route('dashboard.index') }}">Chào {{ Auth::user()->name }}</a></li>
                 <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
             @else
-                <li><a href="{{ route('home.login') }}"><span class="glyphicon glyphicon-user"></span>Đăng Nhập</a></li>
+                <li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-user"></span>Đăng Nhập</a></li>
                 <li><a href="#"><span class="fa fa-group"></span>Đăng Ký</a></li>
             @endif
           </ul>
@@ -71,20 +71,17 @@
             </a>
           </div>
      </div>
-     <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-               <form action="{{ route('search') }}" method="get" class="search-form">
-                   <div class="search_box">
-                    <input type="text" id="query" name="query" placeholder="Search">
-                   </div>
-               </form>
-            </div>
-        </div>
-    </div>
     <div class="container">
+
         <div class="row">
             <div class="col-md-3">
+                <form action="{{ route('search') }}" method="get" role="form">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="query" name="query" placeholder="Search">
+
+                    </div>
+                </form>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Danh Mục</h3>

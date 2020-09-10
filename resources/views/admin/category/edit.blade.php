@@ -1,10 +1,6 @@
 @extends('admin/master')
 @section('title',"Chỉnh Sửa Danh Mục")
-
 @section('main')
-
-
-
 <form action="{{ route('category.update',['id'=>$model->id]) }}" method="POST" role="form">
     @csrf
     <input type="hidden" name="_method" value="PUT">
@@ -30,12 +26,7 @@
                 Publish
             </label>
         </div>
-
     </div>
-
-
     <button type="submit" class="btn btn-primary">Save</button>
 </form>
-
-
 @stop
